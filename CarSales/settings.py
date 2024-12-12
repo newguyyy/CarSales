@@ -41,7 +41,8 @@ INSTALLED_APPS = [
     "playground",
     'InputStock',
     'OutputStock',
-    'Stock'
+    'Stock',
+    'BasicInformaiton',
 ]
 
 MIDDLEWARE = [

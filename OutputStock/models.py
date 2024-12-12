@@ -1,5 +1,5 @@
 from django.db import models
-from Stock.models import Car,Staff
+from BasicInformaiton.models import Car,Staff
 
 # Create your models here.
 class Client(models.Model):

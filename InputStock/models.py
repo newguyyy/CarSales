@@ -1,5 +1,5 @@
 from django.db import models
-from Stock.models import Car
+from BasicInformaiton.models import Car
 
 # Create your models here.
 class Supplier(models.Model):
