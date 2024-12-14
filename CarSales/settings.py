@@ -39,10 +39,10 @@ INSTALLED_APPS = [
     "django.contrib.staticfiles",
     "debug_toolbar",
     "playground",
-    'InputStock',
-    'OutputStock',
+    'Input',
+    'Output',
     'Stock',
-    'BasicInformaiton',
+    'Basic',
 ]
 
 MIDDLEWARE = [

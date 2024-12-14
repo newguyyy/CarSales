@@ -14,7 +14,7 @@ class Migration(migrations.Migration):
 
     operations = [
         migrations.CreateModel(
-            name="Car_Stock",
+            name="Car_Supplier",
             fields=[
                 (
                     "id",
@@ -26,6 +26,8 @@ class Migration(migrations.Migration):
                     ),
                 ),
                 ("Num", models.IntegerField()),
+                ("Date", models.DateField()),
+                ("TotalPrice", models.FloatField()),
                 (
                     "Car_id",
                     models.ForeignKey(
@@ -35,7 +37,7 @@ class Migration(migrations.Migration):
             ],
         ),
         migrations.CreateModel(
-            name="Stock",
+            name="Supplier",
             fields=[
                 (
                     "id",
@@ -46,25 +48,22 @@ class Migration(migrations.Migration):
                         verbose_name="ID",
                     ),
                 ),
+                ("Name", models.CharField(max_length=20)),
+                ("Phone", models.CharField(max_length=20)),
                 ("Addr", models.CharField(max_length=20)),
-                ("Capacity", models.IntegerField()),
                 (
-                    "CarStock",
-                    models.ManyToManyField(through="Stock.Car_Stock", to="Basic.car"),
-                ),
-                (
-                    "Staff_id",
-                    models.ForeignKey(
-                        on_delete=django.db.models.deletion.DO_NOTHING, to="Basic.staff"
+                    "Car_id",
+                    models.ManyToManyField(
+                        through="Input.Car_Supplier", to="Basic.car"
                     ),
                 ),
             ],
         ),
         migrations.AddField(
-            model_name="car_stock",
-            name="Stock_id",
+            model_name="car_supplier",
+            name="Supplier_id",
             field=models.ForeignKey(
-                on_delete=django.db.models.deletion.DO_NOTHING, to="Stock.stock"
+                on_delete=django.db.models.deletion.DO_NOTHING, to="Input.supplier"
             ),
         ),
     ]

@@ -1,5 +1,5 @@
 from django.db import models
-from BasicInformaiton.models import Car,Staff
+from Basic.models import Car,Staff
 
 
 
@@ -13,6 +13,3 @@ class Car_Stock(models.Model):
     Car_id = models.ForeignKey(Car,on_delete=models.DO_NOTHING)
     Stock_id = models.ForeignKey(Stock,on_delete=models.DO_NOTHING)
     Num = models.IntegerField()
-
-
-    

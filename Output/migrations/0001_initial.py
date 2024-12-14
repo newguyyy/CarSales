@@ -14,7 +14,7 @@ class Migration(migrations.Migration):
 
     operations = [
         migrations.CreateModel(
-            name="Car_Stock",
+            name="Client",
             fields=[
                 (
                     "id",
@@ -25,32 +25,41 @@ class Migration(migrations.Migration):
                         verbose_name="ID",
                     ),
                 ),
-                ("Num", models.IntegerField()),
+                ("Name", models.CharField(max_length=20)),
+                ("Phone", models.CharField(max_length=20)),
+                ("Addr", models.CharField(max_length=20)),
+                (
+                    "Work_Status",
+                    models.IntegerField(choices=[(0, "unfinished"), (1, "finished")]),
+                ),
+            ],
+        ),
+        migrations.CreateModel(
+            name="Order",
+            fields=[
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("Date", models.DateField()),
+                ("Total_Price", models.FloatField()),
                 (
                     "Car_id",
                     models.ForeignKey(
                         on_delete=django.db.models.deletion.DO_NOTHING, to="Basic.car"
                     ),
                 ),
-            ],
-        ),
-        migrations.CreateModel(
-            name="Stock",
-            fields=[
                 (
-                    "id",
-                    models.BigAutoField(
-                        auto_created=True,
-                        primary_key=True,
-                        serialize=False,
-                        verbose_name="ID",
+                    "Client_id",
+                    models.ForeignKey(
+                        on_delete=django.db.models.deletion.DO_NOTHING,
+                        to="Output.client",
                     ),
-                ),
-                ("Addr", models.CharField(max_length=20)),
-                ("Capacity", models.IntegerField()),
-                (
-                    "CarStock",
-                    models.ManyToManyField(through="Stock.Car_Stock", to="Basic.car"),
                 ),
                 (
                     "Staff_id",
@@ -61,10 +70,8 @@ class Migration(migrations.Migration):
             ],
         ),
         migrations.AddField(
-            model_name="car_stock",
-            name="Stock_id",
-            field=models.ForeignKey(
-                on_delete=django.db.models.deletion.DO_NOTHING, to="Stock.stock"
-            ),
+            model_name="client",
+            name="Car_id",
+            field=models.ManyToManyField(through="Output.Order", to="Basic.car"),
         ),
     ]
