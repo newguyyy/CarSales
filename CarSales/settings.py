@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'Output',
     'Stock',
     'Basic',
+    'rest_framework'
 ]
 
 MIDDLEWARE = [
