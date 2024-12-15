@@ -19,3 +19,4 @@ class Order(models.Model):
     Staff_id = models.ForeignKey(Staff,on_delete=models.DO_NOTHING)
     Date = models.DateField()
     Total_Price = models.FloatField()
+    num = models.IntegerField()

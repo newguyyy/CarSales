@@ -11,6 +11,8 @@ class Car(models.Model):
         ('Green', 'Green'),
     ]
     Color = models.CharField(max_length=20,choices=Color_Choice)
+    name = models.CharField(max_length=20)
+    description = models.CharField(max_length=200,null=True)
     InputPrice = models.FloatField()
     OutputPrice = models.FloatField()
 

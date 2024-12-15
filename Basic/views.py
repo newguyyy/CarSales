@@ -9,7 +9,7 @@ from .serializers import car_serializer
 
 # Create your views here.
 
-@api_view()
+@api_view(['GET','POST'])
 def car_list(request):
     return Response("ok")
     # cars = Car.objects.all()
