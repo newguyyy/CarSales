@@ -14,9 +14,9 @@ class Client(models.Model):
     Car_id = models.ManyToManyField(Car,through='Order')
 
 class Order(models.Model):
-    Car_id = models.ForeignKey(Car,on_delete=models.DO_NOTHING)
-    Client_id = models.ForeignKey(Client,on_delete=models.DO_NOTHING)
-    Staff_id = models.ForeignKey(Staff,on_delete=models.DO_NOTHING)
+    Car_id = models.ForeignKey(Car,on_delete=models.DO_NOTHING,related_name='Order_Cars')
+    Client_id = models.ForeignKey(Client,on_delete=models.DO_NOTHING,related_name='Order_Clients')
+    Staff_id = models.ForeignKey(Staff,on_delete=models.DO_NOTHING,related_name='Order_Staffs')
     Date = models.DateField()
     Total_Price = models.FloatField()
     num = models.IntegerField()

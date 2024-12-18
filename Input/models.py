@@ -9,9 +9,9 @@ class Supplier(models.Model):
     Car_id = models.ManyToManyField(Car,through='Car_Supplier')
 
 class Car_Supplier(models.Model):
-    Car_id = models.ForeignKey(Car,on_delete=models.DO_NOTHING)
+    Car_id = models.ForeignKey(Car,on_delete=models.DO_NOTHING,related_name='Car_Supplier_Cars')
     Num = models.IntegerField()
-    Supplier_id = models.ForeignKey(Supplier,on_delete=models.DO_NOTHING)
+    Supplier_id = models.ForeignKey(Supplier,on_delete=models.DO_NOTHING,related_name='Car_Supplier_Suppliers')
     Date = models.DateField()
     TotalPrice = models.FloatField()
 
