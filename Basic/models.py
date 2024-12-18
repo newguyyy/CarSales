@@ -1,4 +1,6 @@
 from django.db import models
+from django.conf import settings
+from django.core.validators import MinValueValidator
 
 # Create your models here.
 class Car(models.Model):
@@ -17,10 +19,10 @@ class Car(models.Model):
     OutputPrice = models.FloatField()
 
 class Staff(models.Model):
-    Name = models.CharField(max_length=20)
     Sex = models.CharField(max_length=20)
     Age = models.IntegerField()
     Phone = models.CharField(max_length=20)
     Native_Addr = models.CharField(max_length=20)
-    Salary = models.FloatField()
+    Salary = models.FloatField(validators=[MinValueValidator(3000)])
     Position = models.CharField(max_length=20)
+    user = models.OneToOneField(settings.AUTH_USER_MODEL,on_delete=models.CASCADE)
